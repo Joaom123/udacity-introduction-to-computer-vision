@@ -4,35 +4,6 @@
 This problem set is really just to make sure you can load an image, manipulate the values, produce some output, 
 and submit the code along with the report.
 
-## What to submit
-Create a folder named ps0_xxxx
-
-ps0_matlab if you are programming in MATLAB OR
-ps0_octave if you are programming in Octave OR
-ps0_python if you are programming in Python
-with the following structure and contents:
-
-ps0_xxxx/
-
-* input/ - directory containing input images, videos or other data supplied with the problem set
-
-* output/ - directory containing output images and other generated files  
-  Note: Output images must be stored with following mandatory naming convention:  
-  ps<problem set #>-<question #>-<part>-<counter>.png  
-  Example: ps0-1-a-1.png (see question 1-a)  
-  PNG format is easier to manipulate as it is lossless, hence we recommend using it over JPEG.
-
-* ps0.m or ps0.py - your Matlab/Octave or Python code for this problem set
-
-* ps0_report.pdf - A PDF file that shows all your output for the problem set, including images labeled appropriately   
-  (by filename, e.g. ps0-1-a-1.png) so it is clear which section they are for and the small number of written responses   
-  necessary to answer some of the questions (as indicated). Also, for each main section, if it is not obvious how to   
-  run your code please provide brief but clear instructions (no need to include your entire code in the report).  
-
-* *.m or *.py - Any other supporting files, including Matlab/Octave function files, Python modules, etc.
-
-Zip it as ps0_xxxx.zip, and submit on T-Square.
-
 ## Questions
 ### 1. Input images
     a) Find two interesting images to use. They should be color, rectangular in shape (NOT square).   

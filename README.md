@@ -3,4 +3,5 @@
 [Link to Problem Sets](https://www.cc.gatech.edu/~afb/classes/CS4495-Spring2015-OMS/)
 
 ## Contents
-* PS0
+* PS0 - Images as Functions
+* PS1 - Edges and Lines

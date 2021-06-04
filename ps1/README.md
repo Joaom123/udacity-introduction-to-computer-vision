@@ -75,3 +75,80 @@ the usual convention. Theta (θ) = zero still points in the direction of the pos
         - Hough accumulator array image with peaks highlighted: ps1-3-c-1.png 
         - Intensity image (original one with the noise) with lines drawn on them: ps1-3-c-2.png
         - Text response: Describe what you had to do to get the best result you could.
+
+### 4. For this question use: ps1-input1.png
+    a) This image has objects in it whose boundaries are circles (coins) or lines (pens). 
+    For this question  you’re still finding lines. 
+    Load/create a monochrome version of the image (you can pick a single color channel or use a built-in color to grayscale conversion function), and compute a modestly smoothed version of this image by using a Gaussian filter. 
+    Make σ at least a few pixels big.
+    Output: Smoothed monochrome image: ps1-4-a-1.png
+    
+    b) Create an edge image for the smoothed version above.
+    Output: Edge image: ps1-4-b-1.png
+    
+    c) Apply your Hough algorithm to the edge image to find lines along the pens. 
+    Draw the lines in color on the  original monochrome (not edge) image. 
+    The lines can extend to the edges of the image.
+    Output:
+    - Hough accumulator array image with peaks highlighted: ps1-4-c-1.png
+    - Original monochrome image with lines drawn on it: ps1-4-c-2.png
+    - Text response: Describe what you had to do to get the best result you could.
+
+### 5. Now write a circle finding version of the Hough transform.
+You can implement either the single point method or the point plus gradient method. 
+WARNING: This part may be hard!!! Leave extra time!
+If you find your arrays getting too big (hint, hint) you might try make the range of radii very small to start with and
+see if you can find one size circle. Then maybe try the different sizes.
+    
+    a) Implement hough_circles_acc to compute the accumulator array for a given radius.
+    Using the same original image (monochrome) as above (ps1-input1.png), smooth it, find the edges (or directly use edge image from 4-b above), and try calling your function with radius = 20:
+    H = hough_circles_acc(img_edges, 20);
+
+    This should return an accumulator H of the same size as the supplied image. Each pixel value of the accumulator array should be proportional to the likelihood of a circle of the given radius being present (centered) at that location. Find circle centers by using the same peak finding function:
+            centers = hough_peaks(H, 10);
+    
+    Function file: hough_circles_acc.m (hough_peaks.m should already be there)
+    Output:
+    - Smoothed image: ps1-5-a-1.png (this may be identical to  ps1-4-a-1.png)
+    - Edge image: ps1-5-a-2.png (this may be identical to  ps1-4-b-1.png)
+    - Original monochrome image with the circles drawn in color:  ps1-5-a-3.png
+    
+    b) Implement a function  find_circles that combines the above two steps, searching for circles within a given radius range, and returns circle centers along with their radii:
+            [centers, radii] = find_circles(img_edges, [20 50]);
+    
+    Function file: find_circles.m
+    Output:
+    - Original monochrome image with the circles drawn in color:  ps1-5-b-1.png
+    - Text response: Describe what you had to do to find circles.
+
+### 6. More realistic images. 
+Now that you have Hough methods working, we’re going to try them on images that have clutter in them - visual elements that are not part of the objects to be detected. The image to use is ps1-input2.png.
+   
+    a) Apply your line finder. Use a smoothing filter and edge detector that seems to work best in terms of finding all the pen edges. Don’t worry (until b) about whether you are finding other lines.
+    Output: Smoothed image you used with the Hough lines drawn on them: ps1-6-a-1.png
+    
+    b) Likely the last step found lines that are not the boundaries of the pens. What are the problems present?
+    Output: Text response
+    
+    c) Attempt to find only the lines that are the *boundaries* of the pen.  Three operations you need to try are better thresholding in finding the lines (look for stronger edges), checking the minimum length of the line, looking for nearby parallel lines.
+    Output: Smoothed image with new Hough lines drawn: ps1-6-c-1.png
+
+### 7. Finding circles on the same clutter image (ps1-input2.png).
+    a) Apply your circle finder. Use a smoothing filter that seems to work best in terms of finding all the coins.
+    Output:  the smoothed image you used with the circles drawn on them: ps1-7-a-1.png
+    
+    b) Are there any false alarms? How would/did you get rid of them?
+    Output: Text response (if you did these steps, mention where they are in the code by file, line no. and also include brief snippets)
+
+### 8. Sensitivity to distortion. There is a distorted version of the scene at ps1-input3.png.
+    a) Apply the line and circle finders to the distorted image. Can you find lines? Circles?  
+    Output: Monochrome image with lines and circles (if any) found: ps1-8-a-1.png
+    
+    b) What might you do to fix the circle problem?
+    Output: Text response describing what you might try
+    
+    c) EXTRA CREDIT:  Try to fix the circle problem (THIS IS HARD).
+    Output:
+    - Image that is the best shot at fixing the circle problem, with circles found: ps1-8-c-1.png
+    - Text response describing what tried and what worked best (with snippets).
+
